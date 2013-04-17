@@ -161,8 +161,8 @@ function dataTable(configs) {
 						}
 
 						//post processing of rows to add edit links
-						var user_id = lastCell.text();
-						lastCell.html('<span class="falseLink edit" id="'+user_id+'">Edit</span>');
+						//var user_id = lastCell.text();
+						//lastCell.html('<span class="falseLink edit" id="'+user_id+'">Edit</span>');
 						
 						//alarm view post processing of rows
 						//if(selectedProtobufType == "caf.alarm.Point"){
@@ -189,7 +189,7 @@ function dataTable(configs) {
 					//append match count information
 					var displayFrom = parent.queryFrom+1;
 					var displayTo = parent.queryFrom+finalVisibleRow;
-					$('#rowCountDetails').html('showing '+displayFrom+' to '+displayTo+' of '+matchCount+' matches');
+					$('#rowCountDetails').html('showing '+displayFrom+' to '+displayTo+' of '+matchCount+' rows');
 				}
 				//has the end of the data been reached?
 				if(displayTo >= matchCount){

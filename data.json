@@ -7,23 +7,212 @@
             "data": [
                 {
                     "meta": {},
-                    "value": "monkey"
+                    "value": "458973"
                 },
                 {
                     "meta": {},
-                    "value": "monkey"
+                    "value": "Banana"
                 },
                 {
                     "meta": {},
-                    "value": "monkey"
+                    "value": "Fruit"
                 },
                 {
                     "meta": {},
-                    "value": "monkey"
+                    "value": "600"
                 },
                 {
                     "meta": {},
-                    "value": "monkey"
+                    "value": "Received"
+                }
+            ]
+        },
+        {
+            "meta": {
+                "indentation": 0
+            },
+            "data": [
+                {
+                    "meta": {},
+                    "value": "753951"
+                },
+                {
+                    "meta": {},
+                    "value": "Pomegranate"
+                },
+                {
+                    "meta": {},
+                    "value": "Fruit"
+                },
+                {
+                    "meta": {},
+                    "value": "50"
+                },
+                {
+                    "meta": {},
+                    "value": "Accepted"
+                }
+            ]
+        },
+        {
+            "meta": {
+                "indentation": 0
+            },
+            "data": [
+                {
+                    "meta": {},
+                    "value": "793182"
+                },
+                {
+                    "meta": {},
+                    "value": "Radish"
+                },
+                {
+                    "meta": {},
+                    "value": "Vegetable"
+                },
+                {
+                    "meta": {},
+                    "value": "1000"
+                },
+                {
+                    "meta": {},
+                    "value": "Received"
+                }
+            ]
+        },
+        {
+            "meta": {
+                "indentation": 0
+            },
+            "data": [
+                {
+                    "meta": {},
+                    "value": "468291"
+                },
+                {
+                    "meta": {},
+                    "value": "Potato"
+                },
+                {
+                    "meta": {},
+                    "value": "Vegetable"
+                },
+                {
+                    "meta": {},
+                    "value": "200"
+                },
+                {
+                    "meta": {},
+                    "value": "Ordered"
+                }
+            ]
+        },
+        {
+            "meta": {
+                "indentation": 0
+            },
+            "data": [
+                {
+                    "meta": {},
+                    "value": "548621"
+                },
+                {
+                    "meta": {},
+                    "value": "Rocket"
+                },
+                {
+                    "meta": {},
+                    "value": "Vegetable"
+                },
+                {
+                    "meta": {},
+                    "value": "80"
+                },
+                {
+                    "meta": {},
+                    "value": "Ordered"
+                }
+            ]
+        },
+        {
+            "meta": {
+                "indentation": 0
+            },
+            "data": [
+                {
+                    "meta": {},
+                    "value": "783524"
+                },
+                {
+                    "meta": {},
+                    "value": "Carrot"
+                },
+                {
+                    "meta": {},
+                    "value": "Vegetable"
+                },
+                {
+                    "meta": {},
+                    "value": "300"
+                },
+                {
+                    "meta": {},
+                    "value": "Accepted"
+                }
+            ]
+        },
+        {
+            "meta": {
+                "indentation": 0
+            },
+            "data": [
+                {
+                    "meta": {},
+                    "value": "856429"
+                },
+                {
+                    "meta": {},
+                    "value": "Grape"
+                },
+                {
+                    "meta": {},
+                    "value": "Fruit"
+                },
+                {
+                    "meta": {},
+                    "value": "400"
+                },
+                {
+                    "meta": {},
+                    "value": "Ordered"
+                }
+            ]
+        },
+        {
+            "meta": {
+                "indentation": 0
+            },
+            "data": [
+                {
+                    "meta": {},
+                    "value": "782467"
+                },
+                {
+                    "meta": {},
+                    "value": "Apple"
+                },
+                {
+                    "meta": {},
+                    "value": "Fruit"
+                },
+                {
+                    "meta": {},
+                    "value": "800"
+                },
+                {
+                    "meta": {},
+                    "value": "Ordered"
                 }
             ]
         }
@@ -33,19 +222,19 @@
         "matchCount": 25,
         "headings": [
             {
+                "name": "Product Code",
+                "width": "20%"
+            },
+            {
                 "name": "Name",
                 "width": "20%"
             },
             {
-                "name": "Company",
+                "name": "Category",
                 "width": "20%"
             },
             {
-                "name": "Email",
-                "width": "20%"
-            },
-            {
-                "name": "Role",
+                "name": "Stock Count",
                 "width": "20%"
             },
             {

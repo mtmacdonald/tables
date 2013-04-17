@@ -5,12 +5,18 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" ><!--Prevent IE using compatibility mode on local or intranet pages. Do not put scripts before this line.-->
   <meta name="viewport" content="initial-scale=1.0" ><!--Prevent iOS scaling-->
   <meta charset="UTF-8">
-  <title>Tables</title>
+  <title>Tables - a jQuery data table plugin</title>
 
   <!--load stylesheets first (rationale: https://developers.google.com/speed/docs/best-practices/rtt#PutStylesBeforeScripts)-->
   <link rel="stylesheet" href="framework/framework.min.css" type="text/css" />
   <link rel="stylesheet" href="table.css" type="text/css" />
 
+  <style>
+  #banner {color: #385691; font-weight: bold; padding-top: 30px; background-color: #f7f7f7; border-bottom: 2px solid #385691; }
+  #banner img {padding: 25px 0 25px 0;}
+  </style>
+
+  
   <!--load scripts second-->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="framework/framework.min.js"></script>
@@ -53,7 +59,7 @@
  <div class="w-fixed-width">
 	<a href="./index.html">
 		<div style="background-image:url('logo.png');">
-			Tables jQuery plugin <span style="font-weight:normal;">(version x.x.x)</span>
+			Tables - a jQuery data table plugin <span style="font-weight:normal;">(version x.x.x)</span>
 		</div>
 	</a>
 	<div>
@@ -61,7 +67,12 @@
 	</div>
  </div>
  </header>
- 
+
+ <div id="banner"><div class="w-fixed-width">
+   <h1 class="w-massive w-center w-no-underline">Dynamic data tables for web applications.</h1>
+   <img class="w-center" src="overview.png"  alt="overview" />
+ </div></div>
+
  <section>
  <div class="w-fixed-width">
 

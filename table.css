@@ -1,9 +1,9 @@
 
+#table { border: 1px solid #999; }
+#table table, #table tr, #table td, #table th {border:none!important;}
 
-
-#dataTable table, #dataTable tr, #dataTable td {border:none;}
-#dataTable th {text-align:left!important}
-#dataTable th 
+#table th {text-align:left!important}
+#table th 
 { 
  font-size:12px;
  background-color:#ddd;
@@ -12,8 +12,8 @@
  line-height:30px;
  color:#666;
 }
-#dataTable table input[type=text] { height: 20px!important;  padding-left: 3px; } 
-#dataTable table select { height: 22px; width:100% } 
+#table table input[type=text] { height: 20px!important;  padding-left: 3px; } 
+#table table select { height: 22px; width:100% } 
 
 #tableControls{ background-color: #ddd; height: 30px; padding: 10px; }
 #dataTableSearch{ vertical-align:middle; }
