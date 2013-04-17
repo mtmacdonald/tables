@@ -1,0 +1,21 @@
+
+
+
+#dataTable table, #dataTable tr, #dataTable td {border:none;}
+#dataTable th {text-align:left!important}
+#dataTable th 
+{ 
+ font-size:12px;
+ background-color:#ddd;
+ border-bottom: 1px solid #999;
+ height:30px;
+ line-height:30px;
+ color:#666;
+}
+#dataTable table input[type=text] { height: 20px!important;  padding-left: 3px; } 
+#dataTable table select { height: 22px; width:100% } 
+
+#tableControls{ background-color: #ddd; height: 30px; padding: 10px; }
+#dataTableSearch{ vertical-align:middle; }
+#dataTableSearchInput { width: 200px; margin-right: 5px; vertical-align: middle; }
+#dataTableMatchesLabel { float:right; text-align:right; font-size:11px;}

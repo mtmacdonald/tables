@@ -9,14 +9,21 @@
 
   <!--load stylesheets first (rationale: https://developers.google.com/speed/docs/best-practices/rtt#PutStylesBeforeScripts)-->
   <link rel="stylesheet" href="framework/framework.min.css" type="text/css" />
+  <link rel="stylesheet" href="table.css" type="text/css" />
 
   <!--load scripts second-->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="framework/framework.min.js"></script>
+  <script src="tables.js"></script>
 
   <!--inline scripts last-->
   <script>
 	$(document).ready(function() {
+
+		var tableSettings = {
+			 "showIndex" : false,
+			 "rowsPerPage" : 20
+		};
 
 		//bind the modal dialog plugin
 		var modalOptions = {
@@ -30,6 +37,12 @@
 		});
 		
 		$('.wi-modal-container').remove();
+
+		tableSettings.container = $('#table');
+		table = new dataTable(tableSettings);
+		table.enabled = true;
+		table.draw();
+
 	});
   </script>
  </head>
@@ -39,7 +52,7 @@
  <header>
  <div class="w-fixed-width">
 	<a href="./index.html">
-		<div style="background-image:url('../documentation/images/logo.png');">
+		<div style="background-image:url('logo.png');">
 			Tables jQuery plugin <span style="font-weight:normal;">(version x.x.x)</span>
 		</div>
 	</a>
@@ -51,9 +64,25 @@
  
  <section>
  <div class="w-fixed-width">
+
+	<p class="colored" style="font-size:16px; text-align:center;"><strong>Tables</strong> is a <strong>jQuery plugin</strong> for dynamic HTML data tables on the client side.</p>
+
+ <h2>Features</h2>
  
-	Testing.
+ <ul>
+  <li>AJAX data loading in JSON format</a></li>
+  <li>Configurable column widths</li>
+  <li>Pagination</li>
+  <li>Forward / back buttons</li>
+  <li>Search filter</li>
+ </ul>
+
+ <p>Tables requires a server backend for data access. A sample PHP script and reference JSON format is provided.</p>
  
+ <h2>Reference demo</h2>
+	
+ <div id="table"></div>
+
  </div>
  </section>
 

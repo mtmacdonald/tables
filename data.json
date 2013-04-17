@@ -1,0 +1,57 @@
+{
+    "rows": [
+        {
+            "meta": {
+                "indentation": 0
+            },
+            "data": [
+                {
+                    "meta": {},
+                    "value": "monkey"
+                },
+                {
+                    "meta": {},
+                    "value": "monkey"
+                },
+                {
+                    "meta": {},
+                    "value": "monkey"
+                },
+                {
+                    "meta": {},
+                    "value": "monkey"
+                },
+                {
+                    "meta": {},
+                    "value": "monkey"
+                }
+            ]
+        }
+    ],
+    "meta": {
+        "queryFrom": 0,
+        "matchCount": 25,
+        "headings": [
+            {
+                "name": "Name",
+                "width": "20%"
+            },
+            {
+                "name": "Company",
+                "width": "20%"
+            },
+            {
+                "name": "Email",
+                "width": "20%"
+            },
+            {
+                "name": "Role",
+                "width": "20%"
+            },
+            {
+                "name": "Status",
+                "width": "20%"
+            }
+        ]
+    }
+}
