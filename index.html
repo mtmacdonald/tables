@@ -26,28 +26,12 @@
   <script>
 	$(document).ready(function() {
 
-		var tableSettings = {
-			 "showIndex" : false,
-			 "rowsPerPage" : 20
+		var tableOptions = {
+			'searchQuery' : ''
 		};
-
-		//bind the modal dialog plugin
-		var modalOptions = {
-			'width' : 350,
-			'height' : 310,
-			'title' : 'Test modal dialog',
-			'html' : '<span>Example modal dialog content</span>'
-		};
-		$('#modal').click(function(){
-			$(this).modal(modalOptions);
-		});
 		
-		$('.wi-modal-container').remove();
-
-		tableSettings.container = $('#table');
-		table = new dataTable(tableSettings);
-		table.enabled = true;
-		table.draw();
+		$('#table').table(tableOptions);
+		$('#table').table('draw');
 
 	});
   </script>
@@ -89,11 +73,11 @@
  </ul>
 
  <p>Tables requires a server backend for data access. A sample PHP script and reference JSON format is provided.</p>
- 
- <h2>Reference demo</h2>
-	
- <div id="table"></div>
 
+ <h2>Reference demo</h2>
+
+ <div id="table"></div>
+ 
  </div>
  </section>
 

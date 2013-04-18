@@ -3,52 +3,52 @@
  * author Mark Macdonald
  */
 
-function dataTable(configs) {
- this.enabled = false;
- this.showIndex = configs.showIndex;
- this.queryCount = configs.rowsPerPage; 
- this.container = configs.container;
- this.queryFrom = 0;
- this.isEnd = false;
- this.searchQuery = "";
- this.url = "";
- var parent = this; //scope handle for inside methods
+(function( $ ){
 
- //initiatalise and bind events
- $(this.container).on("click", "#dataTableSearch", function(){
-	parent.queryFrom = 0; //must reset to first page when searching
-	parent.searchQuery = $("#dataTableSearchInput").val();	
-	parent.draw();
- });
- $(this.container).on('keydown', '#dataTableSearchInput', function(evt){
-   if (evt.which == 13) { // return key
-	parent.queryFrom = 0; //must reset to first page when searching
-	parent.searchQuery = $("#dataTableSearchInput").val();	
-	parent.draw();
-   }
- });
- $(this.container).on("click", "#dataTableNext", function(){
-	if(!parent.isEnd){
-		parent.queryFrom = parent.queryFrom+parent.queryCount;
-		parent.draw();
-	}
- });
- $(this.container).on("click", "#dataTablePrevious", function(){
-	if(parent.queryFrom != 0){
-		parent.queryFrom = parent.queryFrom-parent.queryCount;
-		parent.draw();
-	}
- });
+  var methods = {
+    init : function( options ) {
+		var $this = $(this);
+		var settings = $this.data('table'); //fetch existing settings (undefined if none are saved)
+		if(typeof(settings) == 'undefined') { //merge defaults and passed options if none are saved
+			var defaults = {
+				enabled : true,
+				showIndex : false,
+				queryCount : 0, 
+				queryFrom : 0,
+				isEnd : false,
+				searchQuery : '',
+				url : 'data.json'
+			}
+			settings = $.extend({}, defaults, options);
+			$this.data('table', settings);
+		}
+		else { //merge saved settings and passed options
+			settings = $.extend({}, settings, options);
+			$this.data('table', settings);
+		}
+    },
 
- //table draw method
- this.draw = function draw() {
- 
-	 if(this.enabled){
-		 var query = 'data.json'/*+parent.queryFrom+'/'+parent.searchQuery*/;
-		 $.get(/*getAjaxMethod()*/''+query,"", function(result){ //todo - only request maxRows
+	destroy: function() {
+		var $this = $(this);
+		$this.removeData('table');
+	},
+	
+    draw : function( ) {
+		var $this = $(this);
+		var settings = $this.data('table');
+		//alert(settings.searchQuery);
+		
+		if(settings.enabled) {
+			$.get(settings.url,"", function(result){ 
 			if (result != null) {
 
-				parent.queryFrom = result.meta.queryFrom;
+
+			
+			
+			
+			
+			
+				settings.queryFrom = result.meta.queryFrom;
 				var matchCount = result.meta.matchCount;
 				var finalVisibleRow = 0;
 
@@ -60,19 +60,19 @@ function dataTable(configs) {
 				var html = new Array(), i = -1;
 				html[++i] = '<div>';
 				 html[++i] = '<div id="tableControls">';
-				 html[++i] = '<input id="dataTableSearchInput" value="'+parent.searchQuery+'" type="text" />';
+				 html[++i] = '<input id="dataTableSearchInput" value="'+settings.searchQuery+'" type="text" />';
 				 html[++i] = '<button id="dataTableSearch" type="button">Search</button>';
 				 html[++i] = '<div id="dataTableMatchesLabel"><em id="rowCountDetails" style="margin-right:10px;"></em>';
 				 html[++i] = '<button id="dataTablePrevious" type="button"><</button><button id="dataTableNext" type="button">></button></div>';
 				 html[++i] = '</div>';
 				html[++i] = '<table class="w-table w-fixed w-stripe" style="width:100%"></table>';
 				html[++i] = '</div>';
-				parent.container.html(html.join(''));
+				$this.html(html.join(''));
 				
 				//build headings
 				var heading = new Array(), j = -1;
 				heading[++j] = '<thead>';
-				if(parent.showIndex) {
+				if(settings.showIndex) {
 					heading[++j] = '<th>Index</th>';
 				}
 				for (var h=0; h<columnCount; ++h) {
@@ -81,17 +81,17 @@ function dataTable(configs) {
 					heading[++j] = '</th>';
 				}
 				heading[++j] = '</thead>';
-				parent.container.find('table').append(heading.join(''));
+				$this.find('table').append(heading.join(''));
 
 				//build rows
 				if(rowCount == 0){
-					parent.container.find('table').append('<tr><td colspan="'+columnCount+'">No data was returned</td></tr>');
+					$this.find('table').append('<tr><td colspan="'+columnCount+'">No data was returned</td></tr>');
 				}
 				else{
 					for (var row=0; row<result.rows.length; ++row) {
 						var rowHTML = new Array(), j = -1;
 						rowHTML[++j] = '<tr>';
-						if(parent.showIndex) {
+						if(settings.showIndex) {
 							rowHTML[++j] = '<td>'+(row+1)+'</td>';
 						}
 						for (var cell=0; cell<columnCount; ++cell) {
@@ -130,12 +130,12 @@ function dataTable(configs) {
 						}	
 						rowHTML[++j] = '</tr>';
 
-						parent.container.find('table').append(rowHTML.join(''));
+						$this.find('table').append(rowHTML.join(''));
 					
 						//post processing of rows
-						var firstCell = parent.container.find('tr').eq(row+1).find('td:first-child');
-						var lastCell = parent.container.find('tr').eq(row+1).find('td:last-child');
-						var allCells = parent.container.find('tr').eq(row+1).find('td');
+						var firstCell = $this.find('tr').eq(row+1).find('td:first-child');
+						var lastCell = $this.find('tr').eq(row+1).find('td:last-child');
+						var allCells = $this.find('tr').eq(row+1).find('td');
 						var defaultIndentation = 15; //matches framework
 						var extraIndentation = 0; //to allow for arrow
 						if(result.rows[row].meta.arrow == true) {
@@ -187,22 +187,83 @@ function dataTable(configs) {
 					}
 
 					//append match count information
-					var displayFrom = parent.queryFrom+1;
-					var displayTo = parent.queryFrom+finalVisibleRow;
+					var displayFrom = settings.queryFrom+1;
+					var displayTo = settings.queryFrom+finalVisibleRow;
 					$('#rowCountDetails').html('showing '+displayFrom+' to '+displayTo+' of '+matchCount+' rows');
 				}
 				//has the end of the data been reached?
 				if(displayTo >= matchCount){
-					parent.isEnd = true;
+					settings.isEnd = true;
 				}
 				else {
-					parent.isEnd = false;
-				}
+					settings.isEnd = false;
+				}			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 
 			}
 		  }, "json");
-	 }
+		}
+    }
 
- };
+  };
+
+  $.fn.table = function( method ) {
+
+    // Method calling logic
+    if ( methods[method] ) {
+      return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
+    } else if ( typeof method === 'object' || ! method ) {
+      return methods.init.apply( this, arguments );
+    } else {
+      $.error( 'Method ' +  method + ' does not exist on jQuery.table' );
+    }    
+
+  };
+
+})( jQuery );
  
-};
