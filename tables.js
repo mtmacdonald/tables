@@ -5,6 +5,38 @@
 
 (function( $ ){
 
+	var search = function() {
+		var $this = $(this);
+		$this.queryFrom = 0; //must reset to first page when searching
+		$this.searchQuery = $("#dataTableSearchInput").val();
+		methods['draw'].apply();
+	}
+
+	var searchKeyDown = function(evt) {
+		var $this = $(this);
+		if (evt.which == 13) { // return key
+			$this.queryFrom = 0; //must reset to first page when searching
+			$this.searchQuery = $("#dataTableSearchInput").val();	
+			methods['draw'].apply();
+		}
+	}
+
+	var next = function() {
+		var $this = $(this);
+		if(!$this.isEnd){
+			$this.queryFrom = $this.queryFrom+$this.queryCount;
+			methods['draw'].apply();
+		}
+	}
+
+	var previous = function() {
+		var $this = $(this);
+		if($this.queryFrom != 0){
+			$this.queryFrom = $this.queryFrom-$this.queryCount;
+			methods['draw'].apply();
+		}
+	}
+
   var methods = {
     init : function( options ) {
 		var $this = $(this);
@@ -26,6 +58,8 @@
 			settings = $.extend({}, settings, options);
 			$this.data('table', settings);
 		}
+		
+
     },
 
 	destroy: function() {
@@ -42,12 +76,6 @@
 			$.get(settings.url,"", function(result){ 
 			if (result != null) {
 
-
-			
-			
-			
-			
-			
 				settings.queryFrom = result.meta.queryFrom;
 				var matchCount = result.meta.matchCount;
 				var finalVisibleRow = 0;
@@ -198,53 +226,13 @@
 				else {
 					settings.isEnd = false;
 				}			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 
+		//bind event handlers	
+		$this.find('#dataTableSearch').click(search);
+		$this.find('#dataTableSearchInput').keydown(searchKeyDown);
+		$this.find('#dataTableNext').click(next);
+		$this.find('#dataTablePrevious').click(previous);
+		
 			}
 		  }, "json");
 		}
