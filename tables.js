@@ -48,7 +48,7 @@
 					queryFrom : 0,
 					isEnd : false,
 					searchQuery : '',
-					url : 'data.json'
+					url : 'test.php'
 				}
 				settings = $.extend({}, defaults, options);
 				$this.data('table', settings);
@@ -69,8 +69,10 @@
 			var settings = $this.data('table');
 			
 			if(settings.enabled) {
-				var params = { queryFrom: parent.queryFrom, searchQuery: parent.searchQuery };
-				$.getJSON(settings.url, params , function(result) { 
+				//var params = {x: "1", y: "2"};
+				//$.getJSON('data.json', params, function(data) {
+				var params = { queryFrom: settings.queryFrom, searchQuery: settings.searchQuery };
+				$.getJSON(settings.url, params, function(result) { 
 					if (result != null) {
 
 						settings.queryFrom = result.meta.queryFrom;
