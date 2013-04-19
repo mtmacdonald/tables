@@ -5,7 +5,7 @@
 
 .w-datatable table, .w-datatable tr, .w-datatable td, .w-datatable th {
 	border:none;
-	width:100%!important;
+	width:100%;
 }
 
 .w-datatable th {
@@ -22,7 +22,7 @@
 }
 
 .w-datatable table input[type=text] { 
-	height: 20px!important;
+	height: 20px;
 	padding-left: 3px;
 }
 
