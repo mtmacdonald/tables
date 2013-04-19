@@ -86,14 +86,14 @@
 				
 				//create navigation controls (todo - separate styles)
 				var html = new Array(), i = -1;
-				html[++i] = '<div>';
+				html[++i] = '<div class="w-datatable">';
 				 html[++i] = '<div id="tableControls">';
 				 html[++i] = '<input id="dataTableSearchInput" value="'+settings.searchQuery+'" type="text" />';
 				 html[++i] = '<button id="dataTableSearch" type="button">Search</button>';
-				 html[++i] = '<div id="dataTableMatchesLabel"><em id="rowCountDetails" style="margin-right:10px;"></em>';
+				 html[++i] = '<div id="dataTableMatchesLabel"><em id="rowCountDetails"></em>';
 				 html[++i] = '<button id="dataTablePrevious" type="button"><</button><button id="dataTableNext" type="button">></button></div>';
 				 html[++i] = '</div>';
-				html[++i] = '<table class="w-table w-fixed w-stripe" style="width:100%"></table>';
+				html[++i] = '<table class="w-table w-fixed w-stripe"></table>';
 				html[++i] = '</div>';
 				$this.html(html.join(''));
 				
