@@ -69,8 +69,8 @@
 			var settings = $this.data('table');
 			
 			if(settings.enabled) {
-
-				$.get(settings.url,"", function(result) { 
+				var params = { queryFrom: parent.queryFrom, searchQuery: parent.searchQuery };
+				$.getJSON(settings.url, params , function(result) { 
 					if (result != null) {
 
 						settings.queryFrom = result.meta.queryFrom;
@@ -84,12 +84,12 @@
 						//create navigation controls
 						var html = new Array(), i = -1;
 						html[++i] = '<div class="w-datatable">';
-						 html[++i] = '<div id="tableControls">';
-						 html[++i] = '<input id="dataTableSearchInput" value="'+settings.searchQuery+'" type="text" />';
-						 html[++i] = '<button id="dataTableSearch" type="button">Search</button>';
-						 html[++i] = '<div id="dataTableMatchesLabel"><em id="rowCountDetails"></em>';
-						 html[++i] = '<button id="dataTablePrevious" type="button"><</button><button id="dataTableNext" type="button">></button></div>';
-						 html[++i] = '</div>';
+							html[++i] = '<div id="tableControls">';
+							html[++i] = '<input id="dataTableSearchInput" value="'+settings.searchQuery+'" type="text" />';
+							html[++i] = '<button id="dataTableSearch" type="button">Search</button>';
+							html[++i] = '<div id="dataTableMatchesLabel"><em id="rowCountDetails"></em>';
+							html[++i] = '<button id="dataTablePrevious" type="button"><</button><button id="dataTableNext" type="button">></button></div>';
+							html[++i] = '</div>';
 						html[++i] = '<table class="w-table w-fixed w-stripe"></table>';
 						html[++i] = '</div>';
 						$this.html(html.join(''));
@@ -208,7 +208,7 @@
 						$this.find('#dataTablePrevious').click(previous);
 
 					}
-				}, "json");
+				});
 			}
 		}
 
