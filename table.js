@@ -8,8 +8,8 @@
 		var settings = $this.data('table');
 		var searchQuery = $(this).prev('input').val();
 		var new_settings = {
-			queryFrom : 0, //must reset to first page when searching
-			searchQuery : searchQuery,
+			'queryFrom' : 0, //must reset to first page when searching
+			'searchQuery' : searchQuery,
 		}
 		settings = $.extend({}, settings, new_settings);
 		$this.data('table', settings);
@@ -22,8 +22,8 @@
 			var settings = $this.data('table');
 			var searchQuery = $(this).val();
 			var new_settings = {
-				queryFrom : 0, //must reset to first page when searching
-				searchQuery : searchQuery,
+				'queryFrom' : 0, //must reset to first page when searching
+				'searchQuery' : searchQuery,
 			}
 			settings = $.extend({}, settings, new_settings);
 			$this.data('table', settings);
@@ -37,7 +37,7 @@
 		if(!settings.isEnd) {
 			var queryFrom = settings.queryFrom+settings.queryCount;
 			var new_settings = {
-				queryFrom : queryFrom,
+				'queryFrom' : queryFrom,
 			}
 			settings = $.extend({}, settings, new_settings);
 			$this.data('table', settings);
@@ -51,7 +51,7 @@
 		if(settings.queryFrom != 0) {
 			var queryFrom = settings.queryFrom-settings.queryCount;
 			var new_settings = {
-				queryFrom : queryFrom,
+				'queryFrom' : queryFrom,
 			}
 			settings = $.extend({}, settings, new_settings);
 			$this.data('table', settings);
@@ -66,13 +66,13 @@
 			var settings = $this.data('table'); //fetch existing settings (undefined if none are saved)
 			if(typeof(settings) == 'undefined') { //merge defaults and passed options if none are saved
 				var defaults = {
-					enabled : true,
-					showIndex : false,
-					queryCount : 2, //rows per page
-					queryFrom : 0,
-					isEnd : false,
-					searchQuery : '',
-					url : 'test.php'
+					'url' : 'test.php', //the url from which to fetch the table data (JSON format)
+					'queryCount' : 2, //how many rows to show per page (should match the server-side settings)
+					'enabled' : true, //table('draw') only operates when enabled is true
+					'showIndex' : false, //display an optional column showing the row index
+					'queryFrom' : 0, //internal use only - which row to request data from (for pagination)
+					'searchQuery' : '', //internal use only - stores the search query
+					'isEnd' : false //internal use only - whether the end of the data has been reached 
 				}
 				settings = $.extend({}, defaults, options);
 				$this.data('table', settings);

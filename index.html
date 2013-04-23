@@ -19,17 +19,20 @@
   <!--load scripts second-->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="framework/framework.min.js"></script>
-  <script src="tables.js"></script>
+  <script src="table.js"></script>
 
   <!--inline scripts last-->
   <script>
 	$(document).ready(function() {
 
-		var tableOptions = {
-			'searchQuery' : ''
-		};
+		var options = {
+			'url' : 'data.json',
+			'queryCount' : 8,
+			'enabled' : true,
+			'showIndex' : false
+		}
 
-		$('#table').table(tableOptions);
+		$('#table').table(options);
 		$('#table').table('draw');
 		
 	});
@@ -88,6 +91,36 @@
  
  <div id="table"></div>
 
+ <h2>Getting started</h2>
+ 
+ <p>On the server side, use the reference demo (data.json) to understand the required data format. On the client side, set up as below:</p>
+ 
+ <strong>HTML</strong>
+ 
+ <p>Create a <a href="http://www.webknife.org/">webknife template</a>, attach <a href="table.css">table.css</a> and <a href="table.js">table.js</a>, and create a container div:</p>
+<pre>
+<code>&lt;div id="table"&gt;&lt;/div&gt;</code>
+</pre>
+
+ <strong>JavaScript</strong>
+
+ <p>Create a config object, instantiate the table on the container div, and call the 'draw' method:</p>
+ 
+<pre>
+<code>$(document).ready(function() {
+
+	var options = {
+		'url' : 'data.json', //the url from which to fetch the table data (JSON format)
+		'queryCount' : 8, //how many rows to show per page (should match the server-side settings)
+		'enabled' : true, //table('draw') only operates when enabled is true
+		'showIndex' : false //display an optional column showing the row index
+	}
+	
+	$('#table').table(options);
+	$('#table').table('draw');
+});</code>
+</pre>
+ 
  </div>
  </section>
 

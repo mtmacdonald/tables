@@ -21,7 +21,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-Webknife uses third-party libraries
------------------------------------
+Tables uses third-party libraries
+---------------------------------
  
 Tables requires the jQuery JavaScript Library, (c) 2012 The jQuery Foundation, license: MIT (href=http://jquery.com/)
+
+Tables includes the Webknife Web Presentation Framework, (c) 2013 The Webknife Project, license: MIT + Creative Commons Attribution 2.5 License + LGPL (href=http://www.webknife.org/)
