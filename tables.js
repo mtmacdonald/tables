@@ -4,7 +4,7 @@
 (function( $ ){
 
 	var search = function() {
-		var $this = $(this).parent().parent().parent();
+		var $this = $(this).closest('.w-datatable').parent();
 		var settings = $this.data('table');
 		var searchQuery = $(this).prev('input').val();
 		var new_settings = {
@@ -18,7 +18,7 @@
 
 	var searchKeyDown = function(evt) {
 		if (evt.which == 13) { // return key
-			var $this = $(this).parent().parent().parent();
+			var $this = $(this).closest('.w-datatable').parent();
 			var settings = $this.data('table');
 			var searchQuery = $(this).val();
 			var new_settings = {
@@ -32,7 +32,7 @@
 	}
 
 	var next = function() {
-		var $this = $(this).parent().parent().parent().parent();
+		var $this = $(this).closest('.w-datatable').parent();
 		var settings = $this.data('table');
 		if(!settings.isEnd) {
 			var queryFrom = settings.queryFrom+settings.queryCount;
@@ -46,7 +46,7 @@
 	}
 
 	var previous = function() {
-		var $this = $(this).parent().parent().parent().parent();
+		var $this = $(this).closest('.w-datatable').parent();
 		var settings = $this.data('table');
 		if(settings.queryFrom != 0) {
 			var queryFrom = settings.queryFrom-settings.queryCount;
