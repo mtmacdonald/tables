@@ -4,34 +4,58 @@
 (function( $ ){
 
 	var search = function() {
-		var $this = $(this);
-		$this.queryFrom = 0; //must reset to first page when searching
-		$this.searchQuery = $("#dataTableSearchInput").val();
-		methods['draw'].apply();
+		var $this = $(this).parent().parent().parent();
+		var settings = $this.data('table');
+		var searchQuery = $(this).prev('input').val();
+		var new_settings = {
+			queryFrom : 0, //must reset to first page when searching
+			searchQuery : searchQuery,
+		}
+		settings = $.extend({}, settings, new_settings);
+		$this.data('table', settings);
+		methods.draw.apply( $this, new_settings );
 	}
 
 	var searchKeyDown = function(evt) {
-		var $this = $(this);
 		if (evt.which == 13) { // return key
-			$this.queryFrom = 0; //must reset to first page when searching
-			$this.searchQuery = $("#dataTableSearchInput").val();	
-			methods['draw'].apply();
-		}
+			var $this = $(this).parent().parent().parent();
+			var settings = $this.data('table');
+			var searchQuery = $(this).val();
+			var new_settings = {
+				queryFrom : 0, //must reset to first page when searching
+				searchQuery : searchQuery,
+			}
+			settings = $.extend({}, settings, new_settings);
+			$this.data('table', settings);
+			methods.draw.apply( $this, new_settings );
+		}	
 	}
 
 	var next = function() {
-		var $this = $(this);
-		if(!$this.isEnd){
-			$this.queryFrom = $this.queryFrom+$this.queryCount;
-			methods['draw'].apply();
+		var $this = $(this).parent().parent().parent().parent();
+		var settings = $this.data('table');
+		if(!settings.isEnd) {
+			var queryFrom = settings.queryFrom+settings.queryCount;
+			var new_settings = {
+				queryFrom : queryFrom,
+			}
+			settings = $.extend({}, settings, new_settings);
+			$this.data('table', settings);
+			methods.draw.apply( $this, new_settings );
 		}
 	}
 
 	var previous = function() {
-		var $this = $(this);
-		if($this.queryFrom != 0){
-			$this.queryFrom = $this.queryFrom-$this.queryCount;
-			methods['draw'].apply();
+		var $this = $(this).parent().parent().parent().parent();
+		var settings = $this.data('table');
+		if(settings.queryFrom != 0) {
+			var queryFrom = settings.queryFrom-settings.queryCount;
+			var new_settings = {
+				queryFrom : queryFrom,
+			}
+			settings = $.extend({}, settings, new_settings);
+			$this.data('table', settings);
+			methods.draw.apply( $this, new_settings );
 		}
 	}
 
@@ -44,7 +68,7 @@
 				var defaults = {
 					enabled : true,
 					showIndex : false,
-					queryCount : 0, 
+					queryCount : 2, //rows per page
 					queryFrom : 0,
 					isEnd : false,
 					searchQuery : '',
@@ -67,10 +91,8 @@
 		draw : function( ) {
 			var $this = $(this);
 			var settings = $this.data('table');
-			
+
 			if(settings.enabled) {
-				//var params = {x: "1", y: "2"};
-				//$.getJSON('data.json', params, function(data) {
 				var params = { queryFrom: settings.queryFrom, searchQuery: settings.searchQuery };
 				$.getJSON(settings.url, params, function(result) { 
 					if (result != null) {
