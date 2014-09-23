@@ -1,4 +1,4 @@
-tables
+Tables
 ======
 
-A jQuery plugin for dynamic tables
+A jQuery plugin for dynamic data tables

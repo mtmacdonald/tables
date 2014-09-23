@@ -8,8 +8,8 @@
   <title>Tables - a jQuery data table plugin</title>
 
   <!--load stylesheets first (rationale: https://developers.google.com/speed/docs/best-practices/rtt#PutStylesBeforeScripts)-->
-  <link rel="stylesheet" href="framework/framework.min.css" type="text/css" />
-  <link rel="stylesheet" href="table.css" type="text/css" />
+  <link rel="stylesheet" href="require/framework.min.css" type="text/css" />
+  <link rel="stylesheet" href="tables.css" type="text/css" />
 
   <style>
   #banner {color: #385691; font-weight: bold; padding-top: 30px; background-color: #f7f7f7; border-bottom: 2px solid #385691; }
@@ -17,26 +17,12 @@
   </style>
   
   <!--load scripts second-->
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="framework/framework.min.js"></script>
-  <script src="table.js"></script>
+  <script src="require/jquery.min.js"></script>
+  <script src="require/framework.min.js"></script>
+  <script src="tables.js"></script>
+  <script src="example.js"></script>
 
   <!--inline scripts last-->
-  <script>
-	$(document).ready(function() {
-
-		var options = {
-			'url' : 'data.json',
-			'queryCount' : 8,
-			'enabled' : true,
-			'showIndex' : false
-		}
-
-		$('#table').table(options);
-		$('#table').table('draw');
-		
-	});
-  </script>
  </head>
 
  <body>
@@ -44,8 +30,8 @@
  <header>
  <div class="w-fixed-width">
 	<a href="./index.html">
-		<div style="background-image:url('logo.png');">
-			Tables - a jQuery data table plugin <span style="font-weight:normal;">(version 1.0.0)</span>
+		<div style="background-image:url('require/logo.png');">
+			Tables - a jQuery data table plugin <span style="font-weight:normal;">(version x.x.x)</span>
 		</div>
 	</a>
 	<div>
@@ -56,7 +42,7 @@
 
  <div id="banner"><div class="w-fixed-width">
    <h1 class="w-massive w-center w-no-underline">Dynamic data tables for web applications.</h1>
-   <img class="w-center" src="overview.png"  alt="overview" />
+   <img class="w-center" src="require/overview.png"  alt="overview" />
  </div></div>
 
  <section>
@@ -87,17 +73,17 @@
 
  <h2>Reference demo</h2>
  
- <p><strong>Tables</strong> requires a server backend for data access (in JSON format). The static example below shows a reference (data.json) which is included for learning.</p>
+ <p><strong>Tables</strong> requires a server backend for data access (in JSON format). The static example below shows a reference (example.json) which is included for learning.</p>
  
  <div id="table"></div>
 
  <h2>Getting started</h2>
  
- <p>On the server side, use the reference demo (data.json) to understand the required data format. On the client side, set up as below:</p>
+ <p>On the server side, use the reference demo (example.json and example.php) to understand the required data format. On the client side, set up as below:</p>
  
  <strong>HTML</strong>
  
- <p>Create a <a href="http://www.webknife.org/">webknife template</a>, attach <a href="table.css">table.css</a> and <a href="table.js">table.js</a>, and create a container div:</p>
+ <p>Create a blank HTML page, attach <a href="tables.css">tables.css</a> and <a href="tables.js">tables.js</a>, and create a container div:</p>
 <pre>
 <code>&lt;div id="table"&gt;&lt;/div&gt;</code>
 </pre>
@@ -110,9 +96,9 @@
 <code>$(document).ready(function() {
 
 	var options = {
-		'url' : 'data.json', //the url from which to fetch the table data (JSON format)
-		'queryCount' : 8, //how many rows to show per page (should match the server-side settings)
-		'enabled' : true, //table('draw') only operates when enabled is true
+		'url' : 'data.json', //url to fetch row JSON
+		'queryCount' : 8, //how many rows to show per page
+		'enabled' : true, //only operates when enabled is true
 		'showIndex' : false //display an optional column showing the row index
 	}
 	
@@ -127,8 +113,8 @@
  <footer>
 	<div><p class="w-fixed-width">&nbsp;</p></div>
 	<div class="w-fixed-width">
-		<p>&copy; 2013 Mark Macdonald</p>
-		<p><a href="license.txt">Code license</a></p>
+    	<p>&copy; 2014 <a href="https://github.com/mtmacdonald">Mark Macdonald</a></p>
+		<p><a href="LICENSE">MIT license</a></p>
 	</div>
  </footer>
  

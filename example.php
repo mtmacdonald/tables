@@ -1,4 +1,5 @@
-<?
+<?php
+/*! Tables.js (c) 2014 Mark Macdonald | http://mtmacdonald.github.io/tables/LICENSE */
 
 $searchQuery = null;
 $queryFrom = 0;
