@@ -1,3 +1,5 @@
+/*! Tables.js (c) 2014 Mark Macdonald | http://mtmacdonald.github.io/tables/LICENSE */
+
 var rows = {
     "rows": [
         {
